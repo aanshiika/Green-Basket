@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Orders | Green Basket</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #e8f5e9, #e0f2f1);
+    padding: 20px;
+}
+
+/* Main container */
+.dashboard {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Profile header */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.profile-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+/* Orders box */
+.orders {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.orders h3 {
+    color: #2E7D32;
+    margin-bottom: 15px;
+}
+
+/* Order items */
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    background: #f1f8e9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.order-item span:last-child {
+    font-weight: bold;
+    color: #1B5E20;
+}
+
+/* Total */
+.total {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #1B5E20;
+}
+
+/* Empty message */
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+/* Bottom buttons */
+.actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 22px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #388E3C;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- PROFILE HEADER -->
+    <div class="profile">
+        <div class="profile-icon">👤</div>
+        <div>
+            <h2>My Dashboard</h2>
+            <p>Your Order Summary</p>
+        </div>
+    </div>
+
+    <!-- ORDERS SECTION -->
+    <div class="orders">
+        <h3>🛒 Ordered Items</h3>
+        <div id="orderList"></div>
+        <div class="total" id="orderTotal"></div>
+    </div>
+
+    <!-- HOME BUTTON -->
+    <div class="actions">
+        <button class="btn" onclick="goHome()">🏠 Go to Home</button>
+    </div>
+
+</div>
+
+<script>
+/* READ FINAL ORDERS */
+const orders = JSON.parse(localStorage.getItem("orders"));
+const orderList = document.getElementById("orderList");
+const orderTotal = document.getElementById("orderTotal");
+
+let total = 0;
+
+if (!orders || orders.length === 0) {
+    orderList.innerHTML = "<div class='empty'>No orders yet 🛍️</div>";
+    orderTotal.innerText = "";
+} else {
+    orders.forEach(item => {
+        const cost = item.price * item.quantity;
+        total += cost;
+
+        orderList.innerHTML += `
+            <div class="order-item">
+                <span>${item.name} (x${item.quantity})</span>
+                <span>₹${cost.toFixed(2)}</span>
+            </div>
+        `;
+    });
+
+    orderTotal.innerText = "Total Paid: ₹" + total.toFixed(2);
+}
+
+/* HOME REDIRECT */
+function goHome() {
+    window.location.href = "newgrocerystore.htm";  
+}
+</script>
+
+</body>
+</html>

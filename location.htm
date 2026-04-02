@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Delivery Address</title>
+
+<style>
+*{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background-image: url("loc.jpeg");
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.location-card{
+    background: #fff;
+    width: 420px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h2{
+    color: #2e7d32;
+    margin-bottom: 5px;
+}
+
+.header p{
+    color: #777;
+    font-size: 14px;
+}
+
+.form-group{
+    margin-bottom: 12px;
+}
+
+label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input:focus{
+    border-color: #2e7d32;
+}
+
+.btn{
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.location-btn{
+    background: #f1f1f1;
+}
+
+.submit-btn{
+    background: #2e7d32;
+    color: white;
+    font-weight: bold;
+}
+
+.submit-btn:hover{
+    background: #256428;
+}
+
+@media (max-width: 480px){
+    .location-card{
+        width: 95%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="location-card">
+    <div class="header">
+        <h2>📍 Delivery Address</h2>
+        <p>We deliver fresh groceries at your doorstep</p>
+    </div>
+
+    <form id="locationForm">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="10-digit mobile number" required>
+        </div>
+
+        <div class="form-group">
+            <label>House / Flat No.</label>
+            <input type="text" placeholder="Flat no / House no" required>
+        </div>
+
+        <div class="form-group">
+            <label>Street / Area</label>
+            <input type="text" placeholder="Street name, locality" required>
+        </div>
+
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" placeholder="City" required>
+        </div>
+
+        <div class="form-group">
+            <label>State</label>
+            <input type="text" placeholder="State" required>
+        </div>
+
+        <div class="form-group">
+            <label>Pincode</label>
+            <input type="number" placeholder="6-digit pincode" required>
+        </div>
+
+        <button type="button" class="btn location-btn" onclick="getLocation()">
+            📡 Use Current Location
+        </button>
+
+        <button type="submit" class="btn submit-btn">
+            Continue to Payment →
+        </button>
+
+    </form>
+</div>
+
+<script>
+function getLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(
+            function(){
+                alert("📍 Location detected successfully!");
+            },
+            function(){
+                alert("❌ Location access denied");
+            }
+        );
+    } else {
+        alert("Geolocation not supported");
+    }
+}
+
+document.getElementById("locationForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("✅ Address saved successfully!");
+    window.location.href = "pay.htm";
+});
+</script>
+
+</body>
+</html>

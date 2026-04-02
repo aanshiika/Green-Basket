@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register - Green Basket</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(image2.jpg);
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 450px;
+        margin: 60px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        text-align: center;
+        color: #2e7d32;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #43a047;
+        border: none;
+        color: white;
+        font-size: 18px;
+        margin-top: 18px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #2e7d32;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 14px;
+    }
+
+    .login-link a {
+        color: #1b5e20;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .error {
+        color: red;
+        margin-top: 5px;
+        font-size: 14px;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Create Your Account</h2>
+
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name">
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label>Phone Number</label>
+    <input type="text" id="phone" placeholder="Enter your phone number">
+
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter password">
+
+    <label>Confirm Password</label>
+    <input type="password" id="confirmPassword" placeholder="Re-enter password">
+
+    <div class="error" id="errorBox"></div>
+
+    <button onclick="registerUser()">Register</button>
+
+    <div class="login-link">
+        Already have an account? <a href="login.htm">Login here</a>
+    </div>
+</div>
+
+<script>
+function registerUser() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const errorBox = document.getElementById("errorBox");
+
+    errorBox.style.display = "none";
+
+    if (!name || !email || !phone || !password || !confirmPassword) {
+        errorBox.textContent = "All fields are required.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        errorBox.textContent = "Passwords do not match.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    // Store user in localStorage (simulated database)
+    const newUser = { name, email, phone, password };
+
+    localStorage.setItem("user", JSON.stringify(newUser));
+
+    alert("Registration Successful!");
+    window.location.href = "login.htm";
+}
+</script>
+
+</body>
+</html>

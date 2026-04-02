@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Grocery Store</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    a {
+      color: #28a745;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #1e7e34;
+      text-decoration: underline;
+    }
+    header {
+      background-color: #28a745;
+      padding: 1rem 2rem;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      font-weight: 600;
+    }
+
+    .social-icons a {
+      color: white;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
+    .social-icons a:hover {
+      color: #d4ffd4;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex-grow: 1;
+    }
+
+    h1, h2 {
+      color: #28a745;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .team-member {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .team-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #28a745;
+    }
+
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .team-role {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-info {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      background: #28a745;
+      color: white;
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    footer .footer-icons {
+      margin-top: 0.5rem;
+    }
+
+    footer .footer-icons a {
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+    }
+
+    #backToTop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .social-icons {
+        margin-top: 0.5rem;
+      }
+      .team-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Green Basket</div>
+      <ul>
+        <li><a href="newgrocerystore.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+        <li><a href="login.htm">Login</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://instagram.com/yourstore" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:yourstore@gmail.com" aria-label="Gmail">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about-us">
+      <h1>About Green Basket</h1>
+      <p>
+        Welcome to Green Basket – your online source for fresh and quality groceries at your convenience.
+        We deliver happiness, one bag at a time!
+      </p>
+      <p>
+        Since 2024, we've been connecting customers with fresh produce and household goods quickly and affordably.
+      </p>
+    </section>
+
+    <section id="our-team">
+      <h2>Meet Our Team</h2>
+      <div class="team-container">
+        <div class="team-member">
+          <img src="https://i.pravatar.cc/100?img=10" alt="Anshika Tripathi" class="team-photo" />
+          <div class="team-name">Anshika Tripathi</div>
+          <div class="team-role">Founder & CEO</div>
+          <p>Customer-first visionary, leading with passion.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.pravatar.cc/100?img=20" alt="Rahul Singh" class="team-photo" />
+          <div class="team-name">Kavita Gupta</div>
+          <div class="team-role">Operations Head</div>
+          <p>Ensuring freshness and timely delivery, every time.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.pravatar.cc/100?img=30" alt="Priya Sharma" class="team-photo" />
+          <div class="team-name">Priya Sharma</div>
+          <div class="team-role">Customer Support</div>
+          <p>Here to assist you with anything and everything!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-us">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <p><strong>Email:</strong> greenbasket35@gmail.com</p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com/yourstore" target="_blank">@yourstore</a></p>
+        <p><strong>Phone:</strong> +1 555 123 4567</p>
+        <p><strong>Address:</strong> Lanka, Varanasi-221005</p>
+      </div>
+    </section>
+  </main>
+
+  <button id="backToTop" aria-label="Back to top">⬆</button>
+
+  <footer>
+    &copy; 2025 Grocery Store. All rights reserved.
+    <div class="footer-icons">
+      <a href="https://instagram.com/yourstore" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:greenbasket35@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animation
+    function revealOnScroll() {
+      const sections = document.querySelectorAll('section');
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        sec.classList.toggle('visible', top < trigger);
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Back to top button
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.classList.toggle('show', window.scrollY > 300);
+    });
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
